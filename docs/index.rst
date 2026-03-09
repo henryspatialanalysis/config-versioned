@@ -12,23 +12,25 @@ automatic file I/O by extension.
 
 .. code-block:: python
 
+   import importlib.resources as r
    from versioning import Config
 
-   cfg = Config("project_config.yaml")
+   # Load the bundled example config
+   path = str(r.files("versioning") / "data" / "example_config.yaml")
+   cfg = Config(path)
 
-   # Retrieve settings
-   cfg.get("project_name")
+   # Retrieve settings (top-level and nested)
+   cfg.get("a")                  # 'foo'
+   cfg.get("group_c", "e")       # False
 
-   # Build paths (versioned or not)
-   cfg.get_dir_path("results")          # ~/data/results/v1
-   cfg.get_file_path("raw", "input")    # ~/data/raw/records.csv
+   # Build paths (versioned and non-versioned directories)
+   cfg.get_dir_path("raw_data")       # PosixPath('.../raw_data')
+   cfg.get_dir_path("prepared_data")  # PosixPath('.../prepared_data/v1')
+   cfg.get_file_path("raw_data", "a") # PosixPath('.../raw_data/example_input_file.csv')
 
-   # Read and write by extension
-   df = cfg.read("raw", "input")
-   cfg.write(df.head(10), "results", "output")
-
-   # Override the version at runtime
-   cfg_v2 = Config("project_config.yaml", versions={"results": "v2"})
+   # Override the version at runtime — all path lookups update automatically
+   cfg_v2 = Config(path, versions={"prepared_data": "v2"})
+   cfg_v2.get_dir_path("prepared_data")  # PosixPath('.../prepared_data/v2')
 
 .. toctree::
    :maxdepth: 1
