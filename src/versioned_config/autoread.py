@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-from versioning.utilities import pull_from_config
+from versioned_config.utilities import pull_from_config
 
 
 def _require_or_raise(pkg_name, install_extra=None):

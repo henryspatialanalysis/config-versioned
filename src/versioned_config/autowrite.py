@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-from versioning.autoread import _require_or_raise
+from versioned_config.autoread import _require_or_raise
 
 
 def get_file_writing_functions():

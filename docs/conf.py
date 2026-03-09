@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath("../src"))
 
 # -- Project information -----------------------------------------------------
 
-from versioning import __version__
+from versioned_config import __version__
 
 project = "versioning"
 copyright = "2026, Nathaniel Henry"

@@ -6,17 +6,17 @@ automatic file I/O by extension.
 
 .. code-block:: bash
 
-   pip install versioning
+   pip install versioned-config
 
 **Quick example:**
 
 .. code-block:: python
 
    import importlib.resources as r
-   from versioning import Config
+   from versioned_config import Config
 
    # Load the bundled example config
-   path = str(r.files("versioning") / "data" / "example_config.yaml")
+   path = str(r.files("versioned_config") / "data" / "example_config.yaml")
    cfg = Config(path)
 
    # Retrieve settings (top-level and nested)

@@ -4,25 +4,25 @@ API Reference
 Config
 ------
 
-.. autoclass:: versioning.Config
+.. autoclass:: versioned_config.Config
    :members:
    :special-members: __init__, __repr__
 
 File I/O
 --------
 
-.. autofunction:: versioning.autoread
+.. autofunction:: versioned_config.autoread
 
-.. autofunction:: versioning.autowrite
+.. autofunction:: versioned_config.autowrite
 
 Format Registries
 -----------------
 
-.. autofunction:: versioning.get_file_reading_functions
+.. autofunction:: versioned_config.get_file_reading_functions
 
-.. autofunction:: versioning.get_file_writing_functions
+.. autofunction:: versioned_config.get_file_writing_functions
 
 Utilities
 ---------
 
-.. autofunction:: versioning.pull_from_config
+.. autofunction:: versioned_config.pull_from_config

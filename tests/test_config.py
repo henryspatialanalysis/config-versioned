@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from versioning import Config
+from versioned_config import Config
 
 
 # ---------------------------------------------------------------------------
