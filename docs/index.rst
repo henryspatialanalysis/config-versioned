@@ -34,5 +34,6 @@ automatic file I/O by extension.
    :maxdepth: 1
    :caption: Contents
 
+   getting_started
    installation
    api
