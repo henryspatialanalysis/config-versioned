@@ -1,0 +1,19 @@
+a: 'foo'
+b: ['bar', 'baz']
+group_c:
+  d: 1e5
+  e: false
+directories:
+  raw_data:
+    versioned: FALSE
+    path: '~/versioning_test/raw_data'
+    files:
+      a: 'example_input_file.csv'
+  prepared_data:
+    versioned: TRUE
+    path: '~/versioning_test/prepared_data'
+    files:
+      prepared_table: 'example_prepared_table.csv'
+      summary_text: 'summary_of_rows.txt'
+versions:
+  prepared_data: 'v1'
