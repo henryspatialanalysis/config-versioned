@@ -5,18 +5,18 @@ Core package (YAML support only):
 
 .. code-block:: bash
 
-   pip install versioned-config
+   pip install config-versioned
 
 With optional file-format extras:
 
 .. code-block:: bash
 
-   pip install versioned-config[pandas]    # CSV, TSV, Excel, Stata
-   pip install versioned-config[geo]       # Shapefiles, GeoJSON, GeoPackage, etc.
-   pip install versioned-config[raster]    # GeoTIFF and other raster formats
-   pip install versioned-config[xarray]    # NetCDF
-   pip install versioned-config[dbfread]   # DBF files
-   pip install versioned-config[all]       # All of the above
+   pip install config-versioned[pandas]    # CSV, TSV, Excel, Stata
+   pip install config-versioned[geo]       # Shapefiles, GeoJSON, GeoPackage, etc.
+   pip install config-versioned[raster]    # GeoTIFF and other raster formats
+   pip install config-versioned[xarray]    # NetCDF
+   pip install config-versioned[dbfread]   # DBF files
+   pip install config-versioned[all]       # All of the above
 
 Config file structure
 ---------------------
@@ -92,7 +92,7 @@ Supported file extensions
      - nc
      - ``xarray``
 
-For raster files, :func:`~versioned_config.autoread` returns
+For raster files, :func:`~config_versioned.autoread` returns
 ``{"data": np.ndarray, "profile": dict}`` and
-:func:`~versioned_config.autowrite` accepts that same structure (or a
+:func:`~config_versioned.autowrite` accepts that same structure (or a
 ``(data, profile)`` tuple).

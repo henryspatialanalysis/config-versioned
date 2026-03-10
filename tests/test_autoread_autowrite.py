@@ -3,7 +3,7 @@
 import pytest
 import yaml
 
-from versioned_config import autoread, autowrite, get_file_reading_functions, get_file_writing_functions
+from config_versioned import autoread, autowrite, get_file_reading_functions, get_file_writing_functions
 
 
 # ---------------------------------------------------------------------------

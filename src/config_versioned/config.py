@@ -4,9 +4,9 @@ import os
 import pprint
 from pathlib import Path
 
-from versioned_config.utilities import pull_from_config
-from versioned_config.autoread import autoread
-from versioned_config.autowrite import autowrite
+from config_versioned.utilities import pull_from_config
+from config_versioned.autoread import autoread
+from config_versioned.autowrite import autowrite
 
 
 class Config:

@@ -1,22 +1,22 @@
-# versioned-config
+# config-versioned
 
 A Python package for YAML-based configuration management in data pipelines, with versioned directory support and automatic file I/O by extension.
 
 ## Installation
 
 ```bash
-pip install versioned-config
+pip install config-versioned
 ```
 
 Install optional extras for specific file formats:
 
 ```bash
-pip install versioned-config[pandas]   # CSV, TSV, Excel, Stata
-pip install versioned-config[geo]      # Shapefiles, GeoJSON, GeoPackage, etc.
-pip install versioned-config[raster]   # GeoTIFF, rasterio formats
-pip install versioned-config[xarray]   # NetCDF
-pip install versioned-config[dbfread]  # DBF files
-pip install versioned-config[all]      # All of the above
+pip install config-versioned[pandas]   # CSV, TSV, Excel, Stata
+pip install config-versioned[geo]      # Shapefiles, GeoJSON, GeoPackage, etc.
+pip install config-versioned[raster]   # GeoTIFF, rasterio formats
+pip install config-versioned[xarray]   # NetCDF
+pip install config-versioned[dbfread]  # DBF files
+pip install config-versioned[all]      # All of the above
 ```
 
 ## Quick Start
@@ -48,7 +48,7 @@ versions:
 ### 2. Load the config
 
 ```python
-from versioned_config import Config
+from config_versioned import Config
 
 cfg = Config('project_config.yaml')
 ```
@@ -110,7 +110,7 @@ cfg_v2.get_dir_path('results')  # ~/data/results/v2
 ## Standalone autoread / autowrite
 
 ```python
-from versioned_config import autoread, autowrite
+from config_versioned import autoread, autowrite
 
 # Read by extension
 df = autoread('data/records.csv')
@@ -145,8 +145,8 @@ A bundled example is included with the package:
 
 ```python
 import importlib.resources as r
-from versioned_config import Config
+from config_versioned import Config
 
-path = str(r.files("versioned_config") / "data" / "example_config.yaml")
+path = str(r.files("config_versioned") / "data" / "example_config.yaml")
 cfg = Config(path)
 ```

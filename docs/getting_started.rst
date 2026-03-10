@@ -1,14 +1,14 @@
 Getting Started
 ===============
 
-This guide introduces the **versioned-config** package, which simplifies management of
-project settings and file I/O by combining them in a single :class:`~versioned_config.Config`
+This guide introduces the **config-versioned** package, which simplifies management of
+project settings and file I/O by combining them in a single :class:`~config_versioned.Config`
 object.
 
 Data pipelines commonly require reading and writing data to versioned directories. Each
 directory might correspond to one step of a multi-step process, where the version
 corresponds to particular settings for that step and a chain of prior steps that each
-have their own respective versions. The :class:`~versioned_config.Config` class makes it easy
+have their own respective versions. The :class:`~config_versioned.Config` class makes it easy
 to read and write versioned data based on YAML configuration files that can be saved
 alongside each versioned output folder.
 
@@ -22,9 +22,9 @@ string, and boolean settings as well as hierarchically nested values. The
 .. code-block:: python
 
     import importlib.resources as r
-    from versioned_config import Config
+    from config_versioned import Config
 
-    example_config_path = str(r.files("versioned_config") / "data" / "example_config.yaml")
+    example_config_path = str(r.files("config_versioned") / "data" / "example_config.yaml")
 
 The example YAML file looks like this:
 
@@ -50,7 +50,7 @@ The example YAML file looks like this:
     versions:
       prepared_data: 'v1'
 
-Create a :class:`~versioned_config.Config` object by passing either a path to a YAML file
+Create a :class:`~config_versioned.Config` object by passing either a path to a YAML file
 or a plain Python dict. The full config is stored in the ``config`` attribute:
 
 .. code-block:: python
@@ -62,7 +62,7 @@ Retrieving settings
 -------------------
 
 You can access the config dict directly (``config.config["a"]``), but
-:meth:`~versioned_config.Config.get` is preferable — it raises a clear ``KeyError`` if a
+:meth:`~config_versioned.Config.get` is preferable — it raises a clear ``KeyError`` if a
 setting is missing rather than returning ``None`` silently:
 
 .. code-block:: python
@@ -85,7 +85,7 @@ Working with directories
 ------------------------
 
 Two top-level keys — ``directories`` and ``versions`` — give the
-:class:`~versioned_config.Config` object its versioning capability. Each entry under
+:class:`~config_versioned.Config` object its versioning capability. Each entry under
 ``directories`` must have:
 
 - **versioned** (bool) — whether the directory has version subdirectories
@@ -96,8 +96,8 @@ For **versioned** directories the full path is ``{path}/{version}``, where the v
 string comes from the ``versions`` dict. For **non-versioned** directories the full
 path is just ``path``.
 
-Use :meth:`~versioned_config.Config.get_dir_path` and
-:meth:`~versioned_config.Config.get_file_path` to build these paths:
+Use :meth:`~config_versioned.Config.get_dir_path` and
+:meth:`~config_versioned.Config.get_file_path` to build these paths:
 
 .. code-block:: python
 
@@ -136,13 +136,13 @@ Reading and writing files
 -------------------------
 
 Copy the bundled example CSV into the raw data directory, then use
-:meth:`~versioned_config.Config.read` and :meth:`~versioned_config.Config.write` to move data
+:meth:`~config_versioned.Config.read` and :meth:`~config_versioned.Config.write` to move data
 through the pipeline:
 
 .. code-block:: python
 
     # Copy the example input file into the raw_data directory
-    example_csv = str(r.files("versioned_config") / "data" / "example_input_file.csv")
+    example_csv = str(r.files("config_versioned") / "data" / "example_input_file.csv")
     shutil.copy(example_csv, config.get_file_path("raw_data", "a"))
 
     # Read the CSV (returns a pandas DataFrame)
@@ -159,13 +159,13 @@ through the pipeline:
     # Both files now appear in the versioned directory
     list(config.get_dir_path("prepared_data").iterdir())
 
-These methods delegate to :func:`~versioned_config.autoread` and
-:func:`~versioned_config.autowrite`, which dispatch on file extension. To see every
+These methods delegate to :func:`~config_versioned.autoread` and
+:func:`~config_versioned.autowrite`, which dispatch on file extension. To see every
 supported extension:
 
 .. code-block:: python
 
-    from versioned_config import get_file_reading_functions, get_file_writing_functions
+    from config_versioned import get_file_reading_functions, get_file_writing_functions
 
     sorted(get_file_reading_functions().keys())
     sorted(get_file_writing_functions().keys())
@@ -173,7 +173,7 @@ supported extension:
 Saving the config alongside outputs
 ------------------------------------
 
-:meth:`~versioned_config.Config.write_self` writes the current config dict as
+:meth:`~config_versioned.Config.write_self` writes the current config dict as
 ``config.yaml`` into a named directory. This is useful for reproducibility — you can
 always see exactly which settings produced a given set of outputs:
 
@@ -188,7 +188,7 @@ Overriding versions at runtime
 -------------------------------
 
 Rather than editing the YAML file between runs, you can pass a ``versions`` dict when
-constructing a :class:`~versioned_config.Config` object. This sets or overwrites the
+constructing a :class:`~config_versioned.Config` object. This sets or overwrites the
 specified versions while leaving all other settings unchanged — useful for command-line
 scripts or automated pipelines:
 

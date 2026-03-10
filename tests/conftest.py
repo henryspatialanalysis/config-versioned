@@ -9,7 +9,7 @@ import pytest
 @pytest.fixture(scope="session")
 def example_config_path(tmp_path_factory):
     """Path to the bundled example_config.yaml, copied to a temp file."""
-    src = pkg_resources.files("versioned_config") / "data" / "example_config.yaml"
+    src = pkg_resources.files("config_versioned") / "data" / "example_config.yaml"
     tmp = tmp_path_factory.mktemp("data") / "example_config.yaml"
     tmp.write_bytes(src.read_bytes())
     return tmp
@@ -18,7 +18,7 @@ def example_config_path(tmp_path_factory):
 @pytest.fixture(scope="session")
 def example_csv_path(tmp_path_factory):
     """Path to the bundled example_input_file.csv, copied to a temp file."""
-    src = pkg_resources.files("versioned_config") / "data" / "example_input_file.csv"
+    src = pkg_resources.files("config_versioned") / "data" / "example_input_file.csv"
     tmp = tmp_path_factory.mktemp("data") / "example_input_file.csv"
     tmp.write_bytes(src.read_bytes())
     return tmp
@@ -27,7 +27,7 @@ def example_csv_path(tmp_path_factory):
 @pytest.fixture()
 def config_with_tmp_dirs(example_config_path, tmp_path):
     """Config loaded from example YAML with directory paths redirected to tmp_path."""
-    from versioned_config import Config
+    from config_versioned import Config
 
     cfg = Config(str(example_config_path))
     raw_dir = tmp_path / "raw_data"
