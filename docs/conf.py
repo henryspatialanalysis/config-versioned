@@ -55,6 +55,8 @@ napoleon_include_init_with_doc = True
 # -- HTML output -------------------------------------------------------------
 
 html_theme = "furo"
+html_static_path = ["_static"]
+html_logo = "_static/logo.png"
 
 html_theme_options = {
     "source_repository": "https://github.com/henryspatialanalysis/versioning",

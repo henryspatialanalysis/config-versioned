@@ -1,4 +1,4 @@
-# config-versioned
+# Package `config-versioned` <img src="docs/_static/logo.png" align="right" height="139" />
 
 A Python package for YAML-based configuration management in data pipelines, with versioned directory support and automatic file I/O by extension.
 
