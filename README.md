@@ -2,6 +2,10 @@
 
 A Python package for YAML-based configuration management in data pipelines, with versioned directory support and automatic file I/O by extension.
 
+* _[Docs](https://henryspatialanalysis.github.io/config-versioned/)_
+* _[View on PyPI](https://pypi.org/project/config-versioned/)_
+* _This is the Python implementation of the versioning package; this same package is implemented in R, and can be viewed on [GitHub](https://github.com/henryspatialanalysis/versioning) and [CRAN](https://cran.r-project.org/web/packages/versioning/index.html)._
+
 ## Installation
 
 ```bash
