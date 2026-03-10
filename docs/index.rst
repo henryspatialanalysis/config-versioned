@@ -1,4 +1,4 @@
-versioning
+Package `config-versioned`
 ==========
 
 YAML-based configuration management for versioned data pipelines, with

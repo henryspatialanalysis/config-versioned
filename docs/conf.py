@@ -1,4 +1,4 @@
-"""Sphinx configuration for the versioning package."""
+"""Sphinx configuration for the config-versioned package."""
 
 import os
 import sys
@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath("../src"))
 
 from config_versioned import __version__
 
-project = "versioning"
+project = "config-versioned"
 copyright = "2026, Nathaniel Henry"
 author = "Nathaniel Henry"
 release = __version__
@@ -59,7 +59,7 @@ html_static_path = ["_static"]
 html_logo = "_static/logo.png"
 
 html_theme_options = {
-    "source_repository": "https://github.com/henryspatialanalysis/versioning",
+    "source_repository": "https://github.com/henryspatialanalysis/config-versioned",
     "source_branch": "main",
     "source_directory": "docs/",
 }

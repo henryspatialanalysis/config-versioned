@@ -17,7 +17,7 @@ Loading a config file
 
 YAML is a natural format for storing project settings, since it can represent numeric,
 string, and boolean settings as well as hierarchically nested values. The
-**versioning** package ships with an example config file you can use to follow along:
+**config-versioned** package ships with an example config file you can use to follow along:
 
 .. code-block:: python
 
